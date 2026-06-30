@@ -4,7 +4,7 @@ export const bannerData = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.',
     buttonText: 'Shop Now',
-    imageUrl: 'https://bazaar.ui-lib.com/assets/images/products/nike-black.png',
+    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60',
     altText: 'Nike black',
     onButtonClick: () => console.log('Navigating to shop now'),
     imageProps: {
