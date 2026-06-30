@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bazaar-ecommerce
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: build
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

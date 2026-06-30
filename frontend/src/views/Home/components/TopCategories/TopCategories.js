@@ -95,7 +95,19 @@ const TopCategories = () => {
                       }}
                       label="3k orders this week"
                     />
-                    <CardMedia loading="lazy" component="img" height="120" image="/images/category-1.webp" alt="cat" />
+                    <CardMedia
+                      loading="lazy"
+                      component="img"
+                      height="120"
+                      image="/images/category-1.webp"
+                      alt="cat"
+                      sx={{
+                        transition: 'transform 0.4s ease-out',
+                        '&:hover': {
+                          transform: 'scale(1.08)',
+                        },
+                      }}
+                    />
                   </Paper>
                 </CardActionArea>
               </CardContent>

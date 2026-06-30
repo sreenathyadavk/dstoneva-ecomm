@@ -1,6 +1,6 @@
 import { Box } from '@mui/system'
-import { Container, Grid, Typography, Link } from '@mui/material'
-import { AppDownloadButton } from './components'
+import { Container, Grid, Typography, Link, IconButton } from '@mui/material'
+import { GitHub, LinkedIn } from '@mui/icons-material'
 import { footerData } from 'views/Home/data/data'
 
 const Footer = () => (
@@ -26,11 +26,27 @@ const Footer = () => (
                 fontSize: 15,
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in gravida. Sit diam duis
-              mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at amet.
+              Built by Sreenath. A high-performance e-commerce demonstration showcasing custom checkout flows, state persistence, and fluid motion design.
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' } }}>
-              <AppDownloadButton />
+            <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+              <IconButton
+                component="a"
+                href="https://github.com/sreenathyadavk"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: 'grey.500', '&:hover': { color: 'white' }, p: 0.5 }}
+              >
+                <GitHub />
+              </IconButton>
+              <IconButton
+                component="a"
+                href="https://www.linkedin.com/in/sreenath-yadav-63359b392"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: 'grey.500', '&:hover': { color: 'white' }, p: 0.5 }}
+              >
+                <LinkedIn />
+              </IconButton>
             </Box>
           </Box>
         </Grid>

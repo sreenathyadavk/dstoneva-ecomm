@@ -22,12 +22,19 @@ const TopRatings = () => {
       }}
       renderItem={(item) => (
         <>
-          <CardActionArea sx={{ mb: 1.5 }}>
+          <CardActionArea sx={{ mb: 1.5, borderRadius: '8px', overflow: 'hidden' }}>
             <CardMedia
               component="img"
               image={item.imgURL}
               alt={item.title}
-              sx={{ borderRadius: '8px', aspectRatio: 1 / 1 }}
+              sx={{
+                borderRadius: '8px',
+                aspectRatio: 1 / 1,
+                transition: 'transform 0.4s ease-out',
+                '&:hover': {
+                  transform: 'scale(1.08)',
+                },
+              }}
             />
           </CardActionArea>
           <Box display="flex" alignItems="center">

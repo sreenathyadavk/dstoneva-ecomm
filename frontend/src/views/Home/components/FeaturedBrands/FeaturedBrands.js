@@ -14,14 +14,20 @@ const FeaturedBrands = () => {
       itemBreakpoints={{ xs: 12, sm: 6 }}
       renderItem={(item) => (
         <Box>
-          <CardActionArea sx={{ mb: 1 }}>
+          <CardActionArea sx={{ mb: 1, borderRadius: '8px', overflow: 'hidden' }}>
             <CardMedia
               component="img"
               loading="lazy"
               height={170}
               image={item.imageURL}
               alt={item.title}
-              sx={{ borderRadius: '8px' }}
+              sx={{
+                borderRadius: '8px',
+                transition: 'transform 0.4s ease-out',
+                '&:hover': {
+                  transform: 'scale(1.06)',
+                },
+              }}
             />
           </CardActionArea>
           <Typography variant="h6" sx={{ fontSize: '14px !important', fontWeight: 600 }}>

@@ -106,9 +106,9 @@ export const footerData = [
   {
     columnTitle: 'Contact Us',
     columnLinks: [
-      '70 Washington Square South, New York, NY 10012, United States',
-      'Email: uilib.help@gmail.com',
-      'Phone: +1 1123 456 780',
+      'Hyderabad, India',
+      'Email: sreenathyadavk@gmail.com',
+      'LinkedIn: sreenath-yadav',
     ],
     sizing: {
       xs: 12,

@@ -1,4 +1,5 @@
 import { Skeleton, Grid, Box, Typography, Button } from '@mui/material'
+import { motion } from 'framer-motion'
 
 const BannerSlide = ({
   title,
@@ -29,73 +30,85 @@ const BannerSlide = ({
     {...containerProps}
   >
     <Grid item xs={12} sm={5}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <Typography
-          variant="h3"
-          fontWeight={700}
-          sx={{
-            fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
-            lineHeight: 1.2,
-          }}
-          {...titleProps}
-        >
-          {title}
-        </Typography>
-        <Typography
-          sx={{
-            color: 'secondary.dark',
-            fontSize: { xs: '0.875rem', sm: '1rem' },
-            lineHeight: 1.5,
-            maxWidth: '90%',
-          }}
-          {...descriptionProps}
-        >
-          {description}
-        </Typography>
-        {buttonText && (
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{ minWidth: 64, width: 154, height: 44 }}
-            onClick={onButtonClick}
-            {...buttonProps}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <Typography
+            variant="h3"
+            fontWeight={700}
+            sx={{
+              fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
+              lineHeight: 1.2,
+            }}
+            {...titleProps}
           >
-            {buttonText}
-          </Button>
-        )}
-      </Box>
+            {title}
+          </Typography>
+          <Typography
+            sx={{
+              color: 'secondary.dark',
+              fontSize: { xs: '0.875rem', sm: '1rem' },
+              lineHeight: 1.5,
+              maxWidth: '90%',
+            }}
+            {...descriptionProps}
+          >
+            {description}
+          </Typography>
+          {buttonText && (
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ minWidth: 64, width: 154, height: 44 }}
+              onClick={onButtonClick}
+              {...buttonProps}
+            >
+              {buttonText}
+            </Button>
+          )}
+        </Box>
+      </motion.div>
     </Grid>
 
     {imageUrl && (
       <Grid item xs={12} sm={5}>
-        <Box
-          sx={{
-            position: 'relative',
-            width: '100%',
-            height: { xs: 320, sm: 350, md: 375 },
-            maxHeight: 400,
-          }}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, x: 20 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
         >
           <Box
-            component="img"
-            src={imageUrl}
-            alt={altText}
-            loading="lazy"
-            onLoad={(e) => e.target.classList.add('loaded')}
             sx={{
-              display: 'block',
+              position: 'relative',
               width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-              opacity: 0,
-              transition: 'opacity 0.3s ease-in',
-              '&.loaded': { opacity: 1 },
-              ...imageProps.sx,
+              height: { xs: 320, sm: 350, md: 375 },
+              maxHeight: 400,
             }}
-            {...imageProps}
-          />
-          {!imageUrl && <Skeleton variant="rectangular" width="100%" height="100%" />}
-        </Box>
+          >
+            <Box
+              component="img"
+              src={imageUrl}
+              alt={altText}
+              loading="lazy"
+              onLoad={(e) => e.target.classList.add('loaded')}
+              sx={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                opacity: 0,
+                transition: 'opacity 0.3s ease-in',
+                '&.loaded': { opacity: 1 },
+                ...imageProps.sx,
+              }}
+              {...imageProps}
+            />
+            {!imageUrl && <Skeleton variant="rectangular" width="100%" height="100%" />}
+          </Box>
+        </motion.div>
       </Grid>
     )}
   </Grid>

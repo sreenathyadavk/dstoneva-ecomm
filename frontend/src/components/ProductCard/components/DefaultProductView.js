@@ -2,7 +2,6 @@ import {
   Box,
   Card,
   CardContent,
-  CardMedia,
   IconButton,
   Typography,
   Chip,
@@ -11,9 +10,12 @@ import {
   CardActions,
 } from '@mui/material'
 import { Favorite, FavoriteBorder, RemoveRedEye } from '@mui/icons-material'
+import { motion } from 'framer-motion'
 
 import { ProductDialog, CartActionsButton } from 'components'
 import PriceDisplay from './PriceDisplay'
+
+const MotionCard = motion(Card)
 
 const DefaultProductView = ({
   product,
@@ -30,10 +32,14 @@ const DefaultProductView = ({
   getQuantity,
   itemIds,
 }) => (
-  <Card
+  <MotionCard
+    whileHover={{ y: -6, boxShadow: '0px 12px 30px rgba(0,0,0,0.12)' }}
+    transition={{ duration: 0.3, ease: 'easeOut' }}
     sx={{
       margin: 1,
       position: 'relative',
+      borderRadius: '12px',
+      overflow: 'hidden',
       '&:hover #hidden-menu-fav-eye': {
         opacity: 1,
         transition: 'opacity 0.25s',
@@ -52,20 +58,21 @@ const DefaultProductView = ({
         opacity: 0, // Initially hidden
         transition: 'opacity 0.25s',
         gap: 1,
+        zIndex: 10,
       }}
     >
       {/* Quick View Button */}
-      <IconButton onClick={handleQuickView}>
+      <IconButton onClick={handleQuickView} sx={{ bgcolor: 'white', '&:hover': { bgcolor: '#f5f5f5' } }}>
         <RemoveRedEye sx={{ color: 'rgba(174, 180, 190, 1)' }} />
       </IconButton>
 
       {/* Favorite Button */}
       {!isFavourite(product._id) ? (
-        <IconButton onClick={() => addToFavourites(product)}>
+        <IconButton onClick={() => addToFavourites(product)} sx={{ bgcolor: 'white', '&:hover': { bgcolor: '#f5f5f5' } }}>
           <FavoriteBorder sx={{ color: 'rgba(174, 180, 190, 1)' }} />
         </IconButton>
       ) : (
-        <IconButton onClick={() => removeFromFavourites(product._id)}>
+        <IconButton onClick={() => removeFromFavourites(product._id)} sx={{ bgcolor: 'white', '&:hover': { bgcolor: '#f5f5f5' } }}>
           <Favorite sx={{ color: 'crimson' }} />
         </IconButton>
       )}
@@ -77,19 +84,39 @@ const DefaultProductView = ({
         label={`${product.discountPercentage.toFixed(0)}% off`}
         color="primary"
         size="small"
-        sx={{ px: 0.5, position: 'absolute', top: 10, left: 10, fontWeight: 600 }}
+        sx={{ px: 0.5, position: 'absolute', top: 10, left: 10, fontWeight: 600, zIndex: 10 }}
       />
     )}
 
     {/* Product Image */}
-    <CardMedia
-      component="img"
-      height={300}
-      image={product.thumbnail}
-      alt={product.title}
-      sx={{ cursor: 'pointer', backgroundColor: 'white', objectFit: 'contain' }}
+    <Box
+      sx={{
+        height: 300,
+        width: '100%',
+        overflow: 'hidden',
+        cursor: 'pointer',
+        backgroundColor: 'white',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
       onClick={() => navigate(`/products/${product._id}`)}
-    />
+    >
+      <Box
+        component="img"
+        src={product.thumbnail}
+        alt={product.title}
+        sx={{
+          height: '100%',
+          width: '100%',
+          objectFit: 'contain',
+          transition: 'transform 0.4s ease-out',
+          '&:hover': {
+            transform: 'scale(1.08)',
+          },
+        }}
+      />
+    </Box>
 
     {/* Product Details */}
     <Box display="flex" p={2}>
@@ -144,7 +171,7 @@ const DefaultProductView = ({
         handleCloseDialog={handleQuickView}
       />
     )}
-  </Card>
+  </MotionCard>
 )
 
 export default DefaultProductView
