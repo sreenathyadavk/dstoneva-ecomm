@@ -61,8 +61,8 @@ const MOCK_PRODUCTS = [
     price: 45,
     discountPercentage: 0,
     rating: 4.5,
-    thumbnail: 'https://images.unsplash.com/photo-1627124089670-1422d62b2350?w=500&auto=format&fit=crop&q=60',
-    images: ['https://images.unsplash.com/photo-1627124089670-1422d62b2350?w=500&auto=format&fit=crop&q=60'],
+    thumbnail: 'https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=500&auto=format&fit=crop&q=60',
+    images: ['https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=500&auto=format&fit=crop&q=60'],
     stock: 100,
     brand: 'Generic',
     category: 'accessories'
@@ -100,8 +100,8 @@ const MOCK_PRODUCTS = [
     price: 55,
     discountPercentage: 0,
     rating: 4.6,
-    thumbnail: 'https://images.unsplash.com/photo-1613143371159-ca8cffc68f3b?w=500&auto=format&fit=crop&q=60',
-    images: ['https://images.unsplash.com/photo-1613143371159-ca8cffc68f3b?w=500&auto=format&fit=crop&q=60'],
+    thumbnail: 'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=500&auto=format&fit=crop&q=60',
+    images: ['https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=500&auto=format&fit=crop&q=60'],
     stock: 15,
     brand: 'Nature',
     category: 'home'
